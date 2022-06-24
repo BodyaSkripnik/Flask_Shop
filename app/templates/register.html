@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    {% for cat,msg in get_flashed_messages(True) %}
+    <div class="flash {{cat}}">{{msg}}</div>
+    {% endfor %}
+    <form class="form-signin table_login" action="/register" method="post">
+        <h1 class="h3 mb-3 font-weight-normal">Будь ласка, зареєструйтесь</h1>
+        <label for="inputLogin" class="sr-only">Логін</label>
+        <input type="login" id="inputEmail" class="form-control" name="login" placeholder="Логін"  autofocus="">
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email" autofocus="">
+        <label for="inputPassword" class="sr-only">Пароль</label>
+        <input type="password" id="inputpassword" class="form-control" name="password" placeholder="Пароль"  autofocus="">
+        <label for="inputPassword2" class="sr-only">Повторіть пароль</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Повторіть пароль" name="password2" >
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me" name="remainme"> Запам'ятати мене
+          </label>
+        </div>
+        <button class="btn btn-lg btn btn-dark btn-block" type="submit">Зареєструватися</button>
+        <a href="{{url_for('login_page')}}"><button type="button" class="btn btn-dark btn-block btn-lg">Увійти</button></a>
+    </form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% block title %}
+<table border="0" class="profile-table">
+    <tr><td valign="top">
+        {% if current_user.image == None %}
+            <form action="{{url_for('upload')}}" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <input type="submit" value="Загрузить">
+            </form> 
+        {% else %}
+            <div class="profile-ava"><img src="/static/img/uploads/{{user_image}}"></div>
+        {% endif %}
+              <div class="profile-load">
+              </div>
+    </td>
+    <td valign="top" class="profile-panel">
+              <ul class="profile-info">
+              <li>Имя: {{ current_user.login}}</li>
+              <li>Email: {{ current_user.email}}</li>
+              </ul>
+              <a href="{{url_for('logout_page')}}">Выйти из профиля</a>
+    </td></tr>
+</table>
+{% endblock %}
+    

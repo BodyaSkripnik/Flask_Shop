@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+
+{% block title %}
+<!-- <form action="/login" method="post">
+        <table class="table_login">
+            <tr>
+                <td>Логін</td>
+                <td><input type="text" name="login"></td>
+            </tr>
+            <tr>
+                <td>Пароль</td>
+                <td><input type="text" name="password" ></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="remainme">Запам'ятати мене</td>
+            </tr>
+            <tr>
+                <td><a href="{{url_for('register_page')}}"><button type="button" class="btn btn-dark">Реєстрація</button></a></td>
+                <td><button type="button" class="btn btn-dark">Увійти</button></td>
+            </tr>
+        </table>
+    </form> -->
+    {% for cat,msg in get_flashed_messages(True) %}
+    <div class="flash {{cat}}">{{msg}}</div>
+    {% endfor %}
+    <form class="form-signin table_login" action="/login" method="post">
+        <h1 class="h3 mb-3 font-weight-normal text_form">Будь ласка, введіть ваш логін та пароль</h1>
+        <label for="inputLogin" class="sr-only">Логін</label>
+        <input type="login" id="inputEmail" class="form-control" name="login" placeholder="Логін" required="" autofocus="">
+        <label for="inputPassword" class="sr-only">Пароль</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" name="password" required="">
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me" name="remainme"> Запам'ятати мене
+          </label>
+        </div>
+        <button class="btn btn-lg btn btn-dark btn-block" type="submit">Увійти</button>
+        <a href="{{url_for('register_page')}}"><button type="button" class="btn btn-dark btn-block btn-lg">Реєстрація</button></a>
+      </form>
+{% endblock %}
